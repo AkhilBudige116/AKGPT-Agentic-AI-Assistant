@@ -1,0 +1,43 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# vcs / tooling
+.git
+.github
+.gitignore
+.pytest_cache
+.coverage
+htmlcov
+
+# python artefacts
+__pycache__
+*.py[cod]
+.venv
+venv
+env
+
+# local runtime data (supplied through volumes instead)
+data/*
+!data/.gitkeep
+uploads/*
+!uploads/.gitkeep
+faiss_db/*
+!faiss_db/.gitkeep
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+*.log
+
+# not needed in the image
+tests
+scripts/__pycache__
+docker-compose.yml
+Dockerfile
+*.md
+!static/images/README.md
+.idea
+.vscode
+.DS_Store

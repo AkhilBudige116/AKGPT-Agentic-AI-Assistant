@@ -1,0 +1,10 @@
+AKGPT
+This project is a derivative work inspired by BappyGPT
+(https://github.com/entbappy/BappyGPT), licensed under the Apache License, Version 2.0.
+
+Changes from the original: Google Gemini replaced by Groq; ChromaDB replaced by FAISS with
+a SQLite docstore; OpenWeather tool, LangSmith tracing, session-scoped access control,
+SSE event protocol, new frontend, Docker/CI and automated tests added.
+
+Bundled third-party front-end libraries (static/vendor): marked (MIT) and DOMPurify
+(Apache-2.0 / MPL-2.0; see static/vendor/dompurify.LICENSE).

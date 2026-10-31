@@ -1,0 +1,33 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# runtime data (kept as empty dirs via .gitkeep)
+data/*
+!data/.gitkeep
+uploads/*
+!uploads/.gitkeep
+faiss_db/*
+!faiss_db/.gitkeep
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+*.log
+
+# editors / OS
+.idea/
+.vscode/
+.DS_Store
