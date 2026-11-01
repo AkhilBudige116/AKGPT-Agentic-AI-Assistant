@@ -103,16 +103,51 @@ Python 3.11, ~2 GB disk for dependencies (PyTorch via sentence-transformers). Th
 
 ## Local setup
 
-```bash
-python3.11 -m venv .venv
-source .venv/bin/activate            # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env                 # then edit .env
-python scripts/init_db.py            # optional: the app also creates the schema at startup
-uvicorn app:app --host 0.0.0.0 --port 8080
+Run these commands from the repository root. Python 3.11 is required.
+
+### Windows (PowerShell)
+
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+Copy-Item .env.example .env
+notepad .env
 ```
 
-Open <http://localhost:8080>. For auto-reload during development add `--reload`.
+In `.env`, set `GROQ_API_KEY` to your Groq API key to enable chat. Tavily, OpenWeather and LangSmith keys are optional.
+Save the file, then run:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\init_db.py
+.\.venv\Scripts\python.exe -m uvicorn app:app --host 127.0.0.1 --port 8080
+```
+
+Database initialization is optional; the app creates the schema at startup. Open <http://localhost:8080> and check
+that the server is ready with:
+
+```powershell
+Invoke-RestMethod http://localhost:8080/health
+```
+
+Stop the server with `Ctrl+C`. The commands use the virtual environment's Python directly, so activating the environment
+is not required.
+
+### macOS / Linux
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+cp .env.example .env
+# Edit .env and set GROQ_API_KEY to enable chat; other integration keys are optional.
+python scripts/init_db.py            # optional; the app creates the schema at startup
+python -m uvicorn app:app --host 127.0.0.1 --port 8080
+```
+
+Open <http://localhost:8080>. Check readiness with `curl http://localhost:8080/health`. Stop the server with `Ctrl+C`.
+For auto-reload during development, add `--reload` to the Uvicorn command.
 
 ### Configuration
 
